@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kittens!</title>
+  </head>
+  <body>
+    <h1>Hello Kittens</h1>
+    <div>
+      {% for kitten in kittens %}
+        <div>{{kitten.name}}</div>
+        <img src="{{kitten.url}}" style="max-height: 400px"/>
+      {% endfor %}
+    </div>
+  </body>
+</html>
