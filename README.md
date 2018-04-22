@@ -1,22 +1,31 @@
 # SimpleSite
 A simple site built with Flask.  
-Make sure you run the app under virtual env: `source venv/bin/activate`
 
-# To setup the database
-1. ```brew install mysql```
+# Setup environment
+```
+sudo easy_install pip
+sudo pip install virtualenv
 
-2. ```brew services start mysql```
+virtualenv venv
+source venv/bin/activate
 
-3. ```./setup_db.sh```
+pip install Flask
+pip install flask-sqlalchemy
+pip install mysql-python
+```
 
-4. Update permission in case you can't run `setup_db.sh`:  
-```chmod +x setup_db.sh```
+# Setup database
+```
+brew install mysql
+brew services start mysql
+./setup_db.sh
+```
 
-# To run the app
-1. Start the app:  
+Update permission in case you can't run `setup_db.sh`:  ```chmod +x setup_db.sh```
+
+# Run the app
 ```./start_app.sh```
 
-1. Update permission in case you can't run `start_app.sh`:  
-```chmod +x start_app.sh```
+Update permission in case you can't run `start_app.sh`:  ```chmod +x start_app.sh```
 
-1. ```open http://localhost:5000/```
+```open http://localhost:5000/```
