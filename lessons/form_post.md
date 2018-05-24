@@ -41,7 +41,7 @@ with this:
 
 ### What does this mean?
 
-By default, your endpoint only accepts `GET`.  If you `POST` to this endpoint, you will get a 403 error.
+By default, your endpoint only accepts `GET`.  If you `POST` to this endpoint, you will get a `405 Method Not Allowed` error.
 
 Adding `methods=['GET', 'POST']` to the route allows this endpoint to accept both `GET` and `POST`
 
@@ -49,9 +49,24 @@ Refresh your page and you should see a button.  Click on it and see what happens
 
 ## handling the `POST`
 
+First add some new `import` at the top of `routes.py`:
 ```
+from app import app
+from app import db
+from app.models.kitten import Kitten
+from flask import render_template
+from flask import request
+from flask import redirect, url_for
+```
+
+Then in your `def kittens()`, add code to support the `POST`:
+```
+@app.route('/kittens', methods=['GET', 'POST'])
+def kittens():
   if request.method == 'POST':
-    return render_template('kittens.html', kittens=Kitten.query.all())
+    new_kitten = Kitten(name=request.form['name'], url=request.form['url'])
+    db.session.add(new_kitten)
+    db.session.commit()
     return redirect(url_for('kittens'))
   else:        
     return render_template('kittens.html', kittens=Kitten.query.all())
