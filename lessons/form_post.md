@@ -81,7 +81,7 @@ This is a standard `if ... else ...`.  The `else` case just runs our existing lo
 
 The `if request.method == 'POST':` case handles the `POST` data coming from the browser.  Without going into syntax detail, the code is basically doing the following:
 
-* Get the 2 distinct data element from the `POST` - `name` and `url`
+* Get the 2 distinct data element from the `POST` - `request.form['name']` and `request.form['url']`
 * Create a new `Kitten` object and set the `name` and `url` attribute using the data from the `POST`
 * Persist (insert) the new `Kitten` object into the database
 * returns a `redirect` to the browser to reload the page
