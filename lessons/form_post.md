@@ -86,7 +86,7 @@ The `if request.method == 'POST':` case handles the `POST` data coming from the 
 * Persist (insert) the new `Kitten` object into the database
 * returns a `redirect` to the browser to reload the page
 
-Refresh your page, enter some data in the first text box, enter a valid url in the second box, then click the button.
+Refresh your page, enter some data in the first text box, enter a valid url in the second box, then click the button.  Your new image should show up at the bottom of the page
 
 ## Bonus - style the page
 
