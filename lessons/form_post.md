@@ -12,7 +12,7 @@ open up `kittens.html`, add the following right under the first `<div>`
   <form method="post">
     <input type="text" name="name"/>
     <input type="text" name="url"/>
-    <input type="submit" name="new_url"/>
+    <input type="submit" name="new_url" class="btn btn-danger" />
   </form>
 ```
 
