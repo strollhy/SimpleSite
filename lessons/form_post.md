@@ -3,6 +3,7 @@
 * Introduction to HTML `<form/>`
 * Add support to the web app to accept `POST`
 * Get data from the `POST` and insert new data into the database
+* Bonus - style the page
 
 ## Introduction to HTML `<form/>`
 
@@ -45,7 +46,7 @@ By default, your endpoint only accepts `GET`.  If you `POST` to this endpoint, y
 
 Adding `methods=['GET', 'POST']` to the route allows this endpoint to accept both `GET` and `POST`
 
-Refresh your page and you should see a button.  Click on it and see what happens
+Refresh your page and click on the button and see what happens
 
 ## handling the `POST`
 
@@ -85,4 +86,16 @@ The `if request.method == 'POST':` case handles the `POST` data coming from the 
 * Persist (insert) the new `Kitten` object into the database
 * returns a `redirect` to the browser to reload the page
 
+Refresh your page, enter some data in the first text box, enter a valid url in the second box, then click the button.
 
+## Bonus - style the page
+
+open up `kittens.html`, add the following inside the `<head>` element:
+
+```
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+```
+
+Refresh your page, you should see some slight different in the default fonts.
+
+More to come!
