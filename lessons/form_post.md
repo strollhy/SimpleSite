@@ -6,7 +6,7 @@
 
 ## Introduction to HTML `<form/>`
 
-open up kittens.html, add the following right under the first `<div>`
+open up `kittens.html`, add the following right under the first `<div>`
 ```
   <form method="post">
     <input type="text" name="name"/>
@@ -14,6 +14,8 @@ open up kittens.html, add the following right under the first `<div>`
     <input type="submit" name="new_url" class="btn btn-primary"/>
   </form>
 ```
+
+Refresh your page and you should see a button.  Click on it and see what happens
 
 ### What does this mean?
 
@@ -24,23 +26,35 @@ The `type` attribute inside the `<input>` element denotes the type of the data. 
 A `type="submit"` is the button.  When clicked, the data inside `<input type="text" name="name"/>` and `<input type="text" name="url"/>` will be sent (`POST`ed) to the server
 
 
-routes.py
+## Add support to the web app to accept `POST`
 
+open up `routes.py`:
+
+Replace this:
 ```
 @app.route('/kittens')
 ```
-add support for POST
+with this:
 ```
 @app.route('/kittens', methods=['GET', 'POST'])
 ```
 
-handle the POST
+### What does this mean?
+
+By default, your endpoint only accepts `GET`.  If you `POST` to this endpoint, you will get a 403 error.
+
+Adding `methods=['GET', 'POST']` to the route allows this endpoint to accept both `GET` and `POST`
+
+Refresh your page and you should see a button.  Click on it and see what happens
+
+## handling the `POST`
+
 ```
-    if request.method == 'POST':
-        return render_template('kittens.html', kittens=Kitten.query.all())
-	return redirect(url_for('kittens'))
-    else:        
-        return render_template('kittens.html', kittens=Kitten.query.all())
+  if request.method == 'POST':
+    return render_template('kittens.html', kittens=Kitten.query.all())
+    return redirect(url_for('kittens'))
+  else:        
+    return render_template('kittens.html', kittens=Kitten.query.all())
 ```
 
 
