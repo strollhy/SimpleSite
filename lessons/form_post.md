@@ -59,7 +59,7 @@ from flask import request
 from flask import redirect, url_for
 ```
 
-Then in your `def kittens()`, add code to support the `POST`:
+Then inside your `def kittens()` method, add logic to support the `POST`:
 ```
 @app.route('/kittens', methods=['GET', 'POST'])
 def kittens():
@@ -71,5 +71,18 @@ def kittens():
   else:        
     return render_template('kittens.html', kittens=Kitten.query.all())
 ```
+
+### What does this mean?
+
+Now that the endpoint can accept both `GET` and `POST`, we need different logic to handle each method.
+
+This is a standard `if ... else ...`.  The `else` case just runs our existing logic that returns an HTML.
+
+The `if request.method == 'POST':` case handles the `POST` data coming from the browser.  Without going into syntax detail, the code is basically doing the following:
+
+* Get the 2 distinct data element from the `POST` - `name` and `url`
+* Create a new `Kitten` object and set the `name` and `url` attribute using the data from the `POST`
+* Persist (insert) the new `Kitten` object into the database
+* returns a `redirect` to the browser to reload the page
 
 
